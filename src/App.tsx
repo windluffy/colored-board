@@ -6,7 +6,10 @@ function App() {
   return (
     <div className="App">
       <div style={{margin: "auto"}}>
-        <Board />
+        <Board initialMatrixTiles={[
+          ['red', 'red'],
+          ['yellow', 'cyan']
+        ]} />
       </div>
     </div>
   );
