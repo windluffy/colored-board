@@ -16,3 +16,20 @@ export const swap = <T> (matrix: T[][], source: [number, number], target: [numbe
 
   return clonedMatrix
 }
+
+/**
+ * Generate a matrix for given matrix's size and an element factory
+ * @param size [rowLength, columnLength]
+ * @param elementFactoryCallback
+ */
+export const generate = <T = any> (size: [number, number], elementFactoryCallback: (rowIndex: number, columnIndex: number) => T): T[][] => {
+  const [rowLength, columnLength] = size
+
+  return Array
+    .from({length: rowLength})
+    .map((_, rowIndex) =>
+      Array
+        .from({length: columnLength})
+        .map((_, columnIndex) => elementFactoryCallback(rowIndex, columnIndex))
+    ) as T[][]
+}
